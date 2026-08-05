@@ -1,0 +1,148 @@
+@prefix onto: <http://example.org/ontotriage#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+onto:AAS a onto:Medicamento ;
+    rdfs:label "Ácido Acetilsalicílico" ;
+    onto:contraindicadoPara onto:Chikungunya,
+        onto:Dengue,
+        onto:Zika ;
+    onto:indicadoPara onto:DorDeCabeca,
+        onto:Febre ;
+    onto:pertenceACategoria onto:AINE ;
+    prov:wasDerivedFrom onto:Fonte_ANVISA_Bulario .
+
+onto:COVID19 a onto:InfeccaoViral ;
+    rdfs:label "COVID-19" ;
+    onto:apresentaSintoma onto:DificuldadeRespirar,
+        onto:Febre,
+        onto:Tosse ;
+    prov:wasDerivedFrom onto:Fonte_MS_Protocolos .
+
+onto:Dipirona a onto:Medicamento ;
+    rdfs:label "Dipirona" ;
+    onto:indicadoPara onto:DorDeCabeca,
+        onto:Febre ;
+    onto:pertenceACategoria onto:Analgesico ;
+    prov:wasDerivedFrom onto:Fonte_ANVISA_Bulario .
+
+onto:Gripe a onto:InfeccaoViral ;
+    rdfs:label "Gripe (Influenza)" ;
+    onto:apresentaSintoma onto:Coriza,
+        onto:DorDeCabeca,
+        onto:Febre,
+        onto:Tosse ;
+    prov:wasDerivedFrom onto:Fonte_MS_Protocolos .
+
+onto:Ibuprofeno a onto:Medicamento ;
+    rdfs:label "Ibuprofeno" ;
+    onto:contraindicadoPara onto:Chikungunya,
+        onto:Dengue,
+        onto:Zika ;
+    onto:indicadoPara onto:DorDeCabeca,
+        onto:Febre ;
+    onto:pertenceACategoria onto:AINE ;
+    prov:wasDerivedFrom onto:Fonte_ANVISA_Bulario .
+
+onto:OntoTriage a owl:Ontology ;
+    rdfs:comment "Base de Conhecimento OntoTriage." .
+
+onto:Paracetamol a onto:Medicamento ;
+    rdfs:label "Paracetamol" ;
+    onto:indicadoPara onto:DorDeCabeca,
+        onto:Febre ;
+    onto:pertenceACategoria onto:Analgesico ;
+    prov:wasDerivedFrom onto:Fonte_ANVISA_Bulario .
+
+onto:apresentaSintoma a owl:ObjectProperty ;
+    rdfs:domain onto:Doenca ;
+    rdfs:range onto:Sintoma .
+
+onto:contraindicadoPara a owl:ObjectProperty ;
+    rdfs:domain onto:Medicamento ;
+    rdfs:range onto:Doenca .
+
+onto:indicadoPara a owl:ObjectProperty ;
+    rdfs:domain onto:Medicamento ;
+    rdfs:range onto:Sintoma .
+
+onto:pertenceACategoria a owl:ObjectProperty ;
+    rdfs:domain onto:Medicamento ;
+    rdfs:range onto:CategoriaTerapeutica .
+
+onto:Coriza a onto:SintomaRespiratorio ;
+    rdfs:label "Coriza" .
+
+onto:DificuldadeRespirar a onto:SintomaRespiratorio ;
+    rdfs:label "Dificuldade para respirar" .
+
+onto:DorRetroorbital a onto:Sintoma ;
+    rdfs:label "Dor atrás dos olhos" .
+
+onto:AINE a onto:CategoriaTerapeutica ;
+    rdfs:label "Anti-inflamatório Não Esteroidal" .
+
+onto:Analgesico a onto:CategoriaTerapeutica ;
+    rdfs:label "Analgésico e Antitérmico" .
+
+onto:Artralgia a onto:Sintoma ;
+    rdfs:label "Dor intensa nas articulações" .
+
+onto:Chikungunya a onto:InfeccaoViral ;
+    rdfs:label "Chikungunya" ;
+    onto:apresentaSintoma onto:Artralgia,
+        onto:DorDeCabeca,
+        onto:Febre ;
+    prov:wasDerivedFrom onto:Fonte_MS_Protocolos .
+
+onto:Dengue a onto:InfeccaoViral ;
+    rdfs:label "Dengue" ;
+    onto:apresentaSintoma onto:DorDeCabeca,
+        onto:DorRetroorbital,
+        onto:Febre,
+        onto:ManchasVermelhas ;
+    prov:wasDerivedFrom onto:Fonte_MS_Protocolos .
+
+onto:ManchasVermelhas a onto:Sintoma ;
+    rdfs:label "Manchas vermelhas no corpo" .
+
+onto:Tosse a onto:SintomaRespiratorio ;
+    rdfs:label "Tosse" .
+
+onto:Zika a onto:InfeccaoViral ;
+    rdfs:label "Zika Vírus" ;
+    onto:apresentaSintoma onto:Artralgia,
+        onto:DorDeCabeca,
+        onto:Febre,
+        onto:ManchasVermelhas ;
+    prov:wasDerivedFrom onto:Fonte_MS_Protocolos .
+
+onto:CategoriaTerapeutica a owl:Class .
+
+onto:Doenca a owl:Class .
+
+onto:SintomaRespiratorio a owl:Class ;
+    rdfs:subClassOf onto:Sintoma .
+
+onto:Fonte_ANVISA_Bulario a prov:Entity ;
+    rdfs:label "ANVISA - Bulário Eletrônico" ;
+    rdfs:comment "Bulário Eletrônico da Agência Nacional de Vigilância Sanitária com restrições e contraindicações de medicamentos." .
+
+onto:Fonte_MS_Protocolos a prov:Entity ;
+    rdfs:label "Ministério da Saúde - Protocolos de Manejo Clínico" ;
+    rdfs:comment "Guia de Vigilância em Saúde e Protocolos de Manejo Clínico de Arboviroses e Doenças Respiratórias (Ministério da Saúde do Brasil)." .
+
+onto:InfeccaoViral a owl:Class ;
+    rdfs:subClassOf onto:Doenca .
+
+onto:Medicamento a owl:Class .
+
+onto:DorDeCabeca a onto:Sintoma ;
+    rdfs:label "Dor de cabeça" .
+
+onto:Sintoma a owl:Class .
+
+onto:Febre a onto:Sintoma ;
+    rdfs:label "Febre" .
+
